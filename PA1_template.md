@@ -109,11 +109,15 @@ in each interval. We will plot the average to see the pattern throughout the day
 ```r
 DataByIntervals <- group_by(data, interval)
 StepsIntervals<- summarize(DataByIntervals, StepsByInterval = mean(steps, na.rm=TRUE))
+```
+
+
+```r
 with(StepsIntervals, plot(interval, StepsByInterval, type="l", 
                           main="Average Number of Steps in Each Interval", ylab="Steps"))
 ```
 
-![](PA1_template_files/figure-html/dayly pattern-1.png)<!-- -->
+![](PA1_template_files/figure-html/plot_1-1.png)<!-- -->
 
 What we see from the picture is that the maximum activity takes place between 5:00 and 10:00 a.m. 
 likely the time most people commutes to work.To know the exact interval for maximum activity we call
@@ -218,6 +222,10 @@ distinguishing between working days and weekend
 
 ```r
 Data2ByIntervals <- data2 %>% group_by(interval, weekday) %>% summarize(MeanSteps=mean(steps))
+```
+
+
+```r
 library(ggplot2)
 g <- ggplot(Data2ByIntervals, aes(interval, MeanSteps))
 g+geom_line()+
@@ -226,7 +234,7 @@ g+geom_line()+
         labs(x="Interval", y="Number of Steps")
 ```
 
-![](PA1_template_files/figure-html/panel picture-1.png)<!-- -->
+![](PA1_template_files/figure-html/ggplot_1-1.png)<!-- -->
 
 We see a different pattern between working days and weekend. In weekdays there is a clear concentration of the maximum activity at around 9:00 a.m. while the rest of the day the activity is low. In the weekend the activity is more equally distributed across the entire day.
 

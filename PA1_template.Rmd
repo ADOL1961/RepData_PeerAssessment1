@@ -66,6 +66,9 @@ in each interval. We will plot the average to see the pattern throughout the day
 ```{r dayly pattern, echo=TRUE}
 DataByIntervals <- group_by(data, interval)
 StepsIntervals<- summarize(DataByIntervals, StepsByInterval = mean(steps, na.rm=TRUE))
+```
+
+```{r plot_1, echo=TRUE}
 with(StepsIntervals, plot(interval, StepsByInterval, type="l", 
                           main="Average Number of Steps in Each Interval", ylab="Steps"))
 ```
@@ -138,8 +141,11 @@ data2$weekday <- as.factor(replace(data2$weekday, weekdays(as.Date(data2$date))=
 Secondly, we will make a panel plot of the 5-minute interval and the average number of steps per interval
 distinguishing between working days and weekend
 
-```{r panel picture, echo=TRUE}
+```{r grouping data2, echo=TRUE}
 Data2ByIntervals <- data2 %>% group_by(interval, weekday) %>% summarize(MeanSteps=mean(steps))
+```
+
+```{r ggplot_1, echo=TRUE}
 library(ggplot2)
 g <- ggplot(Data2ByIntervals, aes(interval, MeanSteps))
 g+geom_line()+
