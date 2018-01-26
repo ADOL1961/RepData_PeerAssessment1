@@ -2,7 +2,7 @@
 Adolfo Corrales  
 25 de enero de 2018  
 
-# Reproducible Research. Course Project 1
+# Reproducible Research. Course Project_1
 
 In this document we will explain the analysis of the data set "Activity monitoring data" as proposed in the 
 instructions for the Project 1 of the "Reproducible Research Course"
